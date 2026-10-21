@@ -1,8 +1,12 @@
 # EV Powertrain Simulation with EKF-Based State-of-Charge Estimation
-![Model](model_diagram.png.png)
+
 A MATLAB/Simulink model of an electric vehicle driven over the WLTP Class 3 (Low phase) cycle, with a battery model and an Extended Kalman Filter (EKF) that estimates state of charge (SoC) from noisy voltage and current measurements only.
 
+![Model diagram](model_diagram.png.png)
+
 ![SoC tracking](soc_tracking.png)
+
+![Zoomed view](soc_zoom.png)
 
 ## What it does
 
@@ -33,6 +37,11 @@ All numbers are from `run_tests.m`. RMSE is computed after the first 10 s, so th
 | Capacity -5 % (EKF model error) | 0.0693 % |
 | R0 +20 % and Capacity -5 % | 0.1586 % |
 | Bad initial guess (50 % vs true 90 %) | 0.0697 % |
+
+Notes on the results:
+
+- The capacity error has almost no effect here because this cycle only uses about 1.5 % of the battery, so a 5 % capacity error changes SoC by under 0.1 % points. A harder cycle is needed to test this properly.
+- On the first step the estimate overshoots to about 92 % (the OCV curve has a kink at 80 %, so the linearised slope is off), then settles to the true value within about one second.
 
 ![Convergence](soc_startup.png)
 ![Error](soc_error.png)
