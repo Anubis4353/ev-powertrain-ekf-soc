@@ -1,5 +1,5 @@
 # EV Powertrain Simulation with EKF-Based State-of-Charge Estimation
-
+![Model](model_diagram.png.png)
 A MATLAB/Simulink model of an electric vehicle driven over the WLTP Class 3 (Low phase) cycle, with a battery model and an Extended Kalman Filter (EKF) that estimates state of charge (SoC) from noisy voltage and current measurements only.
 
 ![SoC tracking](soc_tracking.png)
